@@ -1,10 +1,12 @@
 # Housing Price Prediction — Streamlit Web App
 
+[![Live Demo](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?logo=streamlit)](https://house-predicti.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B?logo=streamlit)](https://streamlit.io)
 [![Model](https://img.shields.io/badge/Model-Linear%20Regression-green)](https://scikit-learn.org)
 
 > A beginner-friendly end-to-end machine learning project that predicts house prices based on area (sq.ft) using Linear Regression, with an interactive Streamlit web app for real-time predictions.
+
+**[Try the Live App →](https://house-predicti.streamlit.app/)**
 
 ---
 
