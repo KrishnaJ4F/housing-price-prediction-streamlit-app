@@ -1,1 +1,140 @@
+# Housing Price Prediction — Streamlit Web App
 
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B?logo=streamlit)](https://streamlit.io)
+[![Model](https://img.shields.io/badge/Model-Linear%20Regression-green)](https://scikit-learn.org)
+
+> A beginner-friendly end-to-end machine learning project that predicts house prices based on area (sq.ft) using Linear Regression, with an interactive Streamlit web app for real-time predictions.
+
+---
+
+## What It Does
+
+Enter a house area in square feet → the app instantly predicts the estimated price in ₹ using a trained Linear Regression model.
+
+---
+
+## Project Structure
+
+```
+housing-price-prediction-streamlit-app/
+│
+├── app.py           ← Streamlit web app (prediction interface)
+├── train.py         ← Model training, evaluation & visualization
+├── house.csv        ← Dataset (area vs price)
+├── model/
+│   └── model.pkl    ← Saved trained Linear Regression model
+├── requirements.txt ← Python dependencies
+└── README.md
+```
+
+---
+
+## How It Works
+
+### Step 1 — Model Training (`train.py`)
+
+Loads `house.csv` containing two columns — `area` (sq.ft) and `price` (₹).
+
+```python
+x = df[['area']]   # Feature
+y = df[['price']]  # Target
+```
+
+- Splits data 80% train / 20% test (`random_state=42`)
+- Trains a `LinearRegression` model from scikit-learn
+- Evaluates with **R² score** and **Mean Squared Error (MSE)**
+- Plots actual data (blue scatter) vs regression line (red) for visual validation
+- Saves the trained model to `model/model.pkl` using `joblib`
+
+### Step 2 — Streamlit App (`app.py`)
+
+- Loads the saved `model.pkl` at startup
+- Accepts area input between **500 – 20,000 sq.ft**
+- On clicking **"Predict Price"**, runs the model and displays:
+
+```
+Predicted House Price: ₹XX,XXX.XX
+```
+
+---
+
+## Model Performance
+
+| Metric | Value |
+|---|---|
+| Algorithm | Linear Regression |
+| Feature | Area (sq.ft) |
+| Target | Price (₹) |
+| Train / Test Split | 80% / 20% |
+| R² Score | *(run train.py to get value)* |
+| MSE | *(run train.py to get value)* |
+
+> To get the exact R² and MSE values, run `python train.py` — they print to the console.
+
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Python | Core language |
+| Pandas & NumPy | Data loading and processing |
+| Scikit-learn | Linear Regression model |
+| Matplotlib | Regression line visualization |
+| Joblib | Model serialization |
+| Streamlit | Web app interface |
+
+---
+
+## How to Run Locally
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/KrishnaJ4F/housing-price-prediction-streamlit-app.git
+cd housing-price-prediction-streamlit-app
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Train the model (optional — model.pkl already included)
+```bash
+python train.py
+```
+
+### 4. Launch the app
+```bash
+streamlit run app.py
+```
+
+Open your browser at `http://localhost:8501`
+
+---
+
+## Requirements
+
+```
+streamlit
+scikit-learn
+pandas
+numpy
+matplotlib
+joblib
+```
+
+---
+
+## Key Insights
+
+- Area is a strong single predictor of house price — the linear relationship holds well for standard residential properties
+- The regression line visualization in `train.py` clearly shows the price-area trend
+- Keeping `train.py` and `app.py` separate is good ML engineering practice — training and serving are decoupled
+
+---
+
+## Author
+
+**Krishna Kumar** — [@KrishnaJ4F](https://github.com/KrishnaJ4F)
